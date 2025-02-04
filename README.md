@@ -19,7 +19,7 @@ composer boundaries:init
 **Options:**
 
 ```bash
-# use the pre-configured symfony-template as base for your project
+# use a pre-configured symfony-template as staring point for your configuration
 composer boundaries:init --template=symfony.yaml
 
 # force override an existing configuration
@@ -28,14 +28,20 @@ composer boundaries:init --force
 
 ## Run the check
 
+You can run this command locally or in your CI/CD pipelines, based on the exit-status of the script you can identify if
+violations where found:
+
 ```bash
-# run the check
+# User-friendly output
 composer boundaries:check
+
+# Omit output
+composer boundaries:check -q
 ```
 
-If any violation is found, the corresponding errors will be printed and the script will exit with a non-zero status.
+If any violation is found, the corresponding errors will be printed and **the script will exit with a non-zero status**.
 
-In case of no violations, the script will exit with a zero status.
+In case of no violations, the script will print a success message and exit with a zero status.
 
 ## Configuration
 
@@ -52,7 +58,6 @@ and register custom checks in the plugin:
 
 Create your own check by implementing `\Sweikenb\Library\Boundaries\Api\CheckInterface` directly or extending the
 abstract check (which is recommended):
-
 
 ```yaml
 version: 1
