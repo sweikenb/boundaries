@@ -1,0 +1,30 @@
+{
+    "name": "sweikenb/boundaries",
+    "description": "Project structure and sourcecode file-content checker.",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Schröer",
+            "email": "code@sweikenb.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "ext-json": "*",
+        "composer-plugin-api": "^2.6",
+        "symfony/finder": "^6.4 || ^7.0",
+        "symfony/yaml": "^6.4 || ^7.0"
+    },
+    "require-dev": {
+        "composer/composer": "^2.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sweikenb\\Library\\Boundaries\\": "src/"
+        }
+    },
+    "extra": {
+        "class": "Sweikenb\\Library\\Boundaries\\Composer\\Plugin"
+    }
+}

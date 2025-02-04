@@ -1,0 +1,51 @@
+version: 1
+
+content:
+  only-for: "#\\.(php|twig|json|yaml|yml|xml)$#i"
+
+paths:
+  config:
+    label: "App configuration"
+    checks:
+      files:
+        - "#^(packages|routes)/(.+)\\.yaml#"
+        - "#^secrets/(.+)\\.php#"
+        - "#^(bundles|preload)\\.php#"
+        - "#^(services|routes)\\.yaml#"
+
+  migrations:
+    label: "Database migrations"
+    checks:
+      files:
+        - "#^Version(\\d+)\\.php#"
+
+  src:
+    label: "App source"
+    checks:
+      files:
+        - "#^Command/(.+)Command\\.php#"
+        - "#^Controller/(.+)Controller\\.php#"
+        - "#^DataFixtures/(.+)Fixtures\\.php#"
+        - "#^Entity/(.+)\\.php#"
+        - "#^EventListener/(.+)Listener\\.php#"
+        - "#^EventSubscriber/(.+)Subscriber\\.php#"
+        - "#^Form/(.+)\\.php#"
+        - "#^Message/(.+)Message\\.php#"
+        - "#^MessageHandler/(.+)MessageHandler\\.php#"
+        - "#^Repository/(.+)Repository\\.php#"
+        - "#^Security/(.+)\\.php#"
+        - "#^Twig/(.+)\\.php#"
+        - "#^Kernel\\.php#"
+
+  templates:
+    label: "App source"
+    checks:
+      files:
+        - "#^(.+)\\.(html|plain|json|xml)\\.twig#"
+
+  tests:
+    label: "Test suites"
+    checks:
+      files:
+        - "#^bootstrap.php#"
+        - "#^(.+)Test\\.php#"

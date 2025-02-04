@@ -1,0 +1,35 @@
+# Boundaries configuration version
+version: 1
+
+# Content configuration
+content:
+  # Define the filename-patterns for which the proper file-contents will be loaded to be used in checks,
+  # non-matching files will enter the checks with an empty string as $content.
+  # Note that this can be a single string or an array of strings if you want to check for multiple patterns.
+  only-for: "#\\.(php|twig|json|yaml|yml|xml)$#i"
+
+# Paths to check
+paths:
+
+  # Define the directory you want to check relatively to the composer working-directory:
+  src/Some/Directory:
+
+    # Set a label for this directory in order to better organize your config and print better error messages
+    label: "My example source directory"
+
+    # Define your checks for this directory
+    checks:
+
+      # The checked file paths will be relativ to the configured directory without any prefix such as "./".
+      # This allows for detailed patterns (e.g. ensuring the file starts with uppercase letters for example):
+      files:
+        - "#^([A-Z]+)(.+)\\.php#"
+
+      # Content patterns will run the pattern-check against the whole content of each file in the configured directory.
+      # You can use case-insensitive checks by providing the "i" modifier to the pattern:
+      content-deny:
+        - "#denied content php-regex pattern here#i"
+
+      # The allow-pattern will whitelist files that where previously matched the deny-pattern.
+      content-allow:
+        - "#allowed content php-regex pattern here, which wins over any 'content-deny' pattern#i"
